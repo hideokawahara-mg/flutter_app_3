@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_media/instagram_media.dart';
+import 'package:share/share.dart';
 
 void main() {
   runApp(MyApp());
@@ -73,7 +74,8 @@ class _MyHomePageState extends State<MyHomePage> {
         children: <Widget>[
           InkWell(
             onTap: () {
-              _getIGMedia(context);
+              // _getIGMedia(context);
+              _share();
             },
             child: Container(
                 width: 200,
@@ -141,6 +143,10 @@ class _MyHomePageState extends State<MyHomePage> {
     print(result[2]); //IDs
     print(result[3]); //types (IMAGE, VIDEO, or CAROUSEL_ALBUM)
     print(result[4]); //captions
+  }
+
+  Future _share() async {
+    await Share.share("ここに共有したい文字列");
   }
 
   _determineText(input) {
