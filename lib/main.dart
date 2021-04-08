@@ -76,17 +76,17 @@ class _MyHomePageState extends State<MyHomePage> {
             _image == null
                 ? Text('No image selected.')
                 : Image.file(_image),
-            RaisedButton(
+            ElevatedButton(
               child: Text('保存'),
               onPressed: _saveImage,
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text('テキスト共有'),
               onPressed: () {
                 Share.text('title', 'Share text.', 'text/plain');
               },
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text('画像共有'),
               onPressed: () async {
                 if(_image != null) {
