@@ -8,6 +8,8 @@
     <string>カメラにアクセスするよ</string>
     <key>NSMicrophoneUsageDescription</key>
     <string>マイクにアクセスするよ</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>ライブラリに保存するよ</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
