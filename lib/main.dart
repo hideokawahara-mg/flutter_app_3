@@ -55,6 +55,16 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  Future _getVideo() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);//アルバム
+
+    if(pickedFile != null) {
+      setState((){
+        _image = File(pickedFile.path);
+      });
+    }
+  }
+ 
   // 画像の保存
   Future _saveImage() async {
     if(_image != null) {
@@ -77,17 +87,24 @@ class _MyHomePageState extends State<MyHomePage> {
                 ? Text('No image selected.')
                 : Image.file(_image),
             ElevatedButton(
-              child: Text('保存'),
-              onPressed: _saveImage,
+              child: Text('画像をアルバムから取得する'),
+              onPressed: _getVideo,
             ),
             ElevatedButton(
-              child: Text('テキスト共有'),
-              onPressed: () {
-                Share.text('title', 'Share text.', 'text/plain');
+              child: Text('画像投稿する'),
+              // onPressed: () {
+              //   Share.text('title', 'Share text.', 'text/plain');
+              // },
+              onPressed: () async {
+                if(_image != null) {
+                  Uint8List _buffer = await _image.readAsBytes();
+                  await Share.file(
+                      'Share image', 'photo.jpg', _buffer, 'image/jpg');
+                }
               },
             ),
             ElevatedButton(
-              child: Text('画像共有'),
+              child: Text('動画共有する'),
               onPressed: () async {
                 if(_image != null) {
                   ShareExtend.share(_image.path, "video");
@@ -103,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _getImage,
         tooltip: 'Pick',
-        child: Icon(Icons.add),
+        child: Text('動画をアルバムから取得する'),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
