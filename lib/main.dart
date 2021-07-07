@@ -131,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
             builder: (context) => InstagramMedia(
                 mediaTypes: 0,
                 appID: '514290619574782',
-                appSecret: '91e61c63db2f2d2026e43ab583534028')));
+                appSecret: 'ebbb18a155690752b54363699953cad8')));
     setState(() {
       imageUrls = result[0];
       imageCaptions = result[4];
