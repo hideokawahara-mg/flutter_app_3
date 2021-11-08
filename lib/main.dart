@@ -153,6 +153,7 @@ class _MyHomePageState extends State<MyHomePage> {
     //
   }
   //
+  //
 
   _determineText(input) {
     if (input == null) {
