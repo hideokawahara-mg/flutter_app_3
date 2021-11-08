@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_media/instagram_media.dart';
+import 'package:instagram_media_picker/instagram_media_picker.dart';
 
 void main() {
   runApp(MyApp());
@@ -125,22 +126,30 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   _getIGMedia(context) async {
+    // final result = await Navigator.push(
+    //     context,
+    //     MaterialPageRoute(
+    //         builder: (context) => InstagramMedia(
+    //             mediaTypes: 0,
+    //             appID: '514290619574782',
+    //             appSecret: 'ebbb18a155690752b54363699953cad8')));
+    // setState(() {
+    //   imageUrls = result[0];
+    //   imageCaptions = result[4];
+    // });
+    // print(result[0]); //urls
+    // print(result[1]); //timestamps
+    // print(result[2]); //IDs
+    // print(result[3]); //types (IMAGE, VIDEO, or CAROUSEL_ALBUM)
+    // print(result[4]); //captions
     final result = await Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => InstagramMedia(
-                mediaTypes: 0,
-                appID: '514290619574782',
-                appSecret: 'ebbb18a155690752b54363699953cad8')));
-    setState(() {
-      imageUrls = result[0];
-      imageCaptions = result[4];
-    });
-    print(result[0]); //urls
-    print(result[1]); //timestamps
-    print(result[2]); //IDs
-    print(result[3]); //types (IMAGE, VIDEO, or CAROUSEL_ALBUM)
-    print(result[4]); //captions
+            builder: (context) => InstagramMediaPicker(
+                appID: '514290619574782', //IG app ID from FB Developer Account
+                appSecret: 'ebbb18a155690752b54363699953cad8' //App Secret
+                )));
+    print(result);
   }
 
   _determineText(input) {
