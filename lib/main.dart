@@ -152,6 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
     print(result);
     //
   }
+  //
 
   _determineText(input) {
     if (input == null) {
